@@ -1,2 +1,2 @@
 # Pong
-Pong game code using C++ and OpenCV Library (POO : programmation orientée objet)
+Pong game code using C++ and OpenCV Library (OOP : Object Oriented Programming)
