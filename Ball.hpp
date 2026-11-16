@@ -1,24 +1,30 @@
-Balle::Balle(int largeurEcran, int hauteurEcran, int rayon, double vitesseBase, int epaisseurMur)
-    : x_(largeurEcran / 2.0),
-      y_(hauteurEcran / 2.0),
-      vx_(0.0),
-      vy_(0.0),
-      rayon_(rayon),
-      vitesseBase_(vitesseBase),
-      largeurEcran_(largeurEcran),
-      hauteurEcran_(hauteurEcran),
-      epaisseurMur_(epaisseurMur) {}
+#pragma once
 
-void Balle::reinitialiser() {
-    x_ = largeurEcran_ / 2.0;
-    y_ = hauteurEcran_ / 2.0;
-    vx_ = 0.0;
-    vy_ = 0.0;
-}
+#include <opencv2/opencv.hpp>
 
-EtatBalle Balle::move(const cv::Rect& barreGauche, double vyBarreGauche,
-                      const cv::Rect& barreDroite, double vyBarreDroite) {
-}
+enum class BallState {
+    InPlay,
+    Player1Point,
+    Player2Point
+};
 
-void Balle::draw(cv::Mat& image) const {
-}   
+class Ball {
+public:
+    Ball(int screenWidth, int screenHeight, int radius, double baseSpeed, int wallThickness);
+
+    void reset();
+    BallState move(const cv::Rect& leftPaddle, double leftPaddleVy,
+                   const cv::Rect& rightPaddle, double rightPaddleVy);
+    void draw(cv::Mat& image) const;
+
+private:
+    double x_;
+    double y_;
+    double vx_;
+    double vy_;
+    int radius_;
+    double baseSpeed_;
+    int screenWidth_;
+    int screenHeight_;
+    int wallThickness_;
+};
