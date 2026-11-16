@@ -1,0 +1,26 @@
+# Dossier de build CMake
+build/
+cmake-build-*/
+
+# Fichiers générés par la compilation C++
+*.o
+*.obj
+*.a
+*.so
+*.out
+*.exe
+pong
+
+# Fichiers temporaires CMake (au cas où cmake est lancé à la racine par erreur)
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Configuration locale VS Code (évite les conflits de chemins avec Haythem)
+.vscode/
+
+# Fichiers système Linux
+*~
+.DS_Store
