@@ -9,6 +9,8 @@ public:
     void moveUp();
     void moveDown();
     void stop();
+    void setSpeed(double speed);
+    void handleInput(int key);
     void update();
     void reset();
     void draw(cv::Mat& image) const;
