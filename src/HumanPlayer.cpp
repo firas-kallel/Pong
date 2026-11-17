@@ -1,5 +1,6 @@
 #include "HumanPlayer.hpp"
 #include <algorithm>
+#include <cmath>
 
 HumanPlayer::HumanPlayer(int x, int screenHeight, int width, int height, double speed, int wallThickness)
     : x_(x),
@@ -28,17 +29,13 @@ void HumanPlayer::setSpeed(double speed) {
 }
 
 void HumanPlayer::handleInput(int key) {
-    const int UP_ARROW_WIN = 2490368;
-    const int DOWN_ARROW_WIN = 2621440;
     const int UP_ARROW_LINUX = 65362;
     const int DOWN_ARROW_LINUX = 65364;
 
-    if (key == 'z' || key == 'Z' || key == UP_ARROW_WIN || key == UP_ARROW_LINUX) {
+    if (key == 'z' || key == 'Z' || key == UP_ARROW_LINUX) {
         moveUp();
-    } else if (key == 's' || key == 'S' || key == DOWN_ARROW_WIN || key == DOWN_ARROW_LINUX) {
+    } else if (key == 's' || key == 'S' || key == DOWN_ARROW_LINUX) {
         moveDown();
-    } else if (key == -1) {
-        stop();
     }
 }
 
@@ -48,6 +45,11 @@ void HumanPlayer::update() {
     double minY = static_cast<double>(wallThickness_);
     double maxY = static_cast<double>(screenHeight_ - wallThickness_ - height_);
     y_ = std::clamp(y_, minY, maxY);
+
+    vy_ *= 0.85;
+    if (std::abs(vy_) < 0.2) {
+        vy_ = 0.0;
+    }
 }
 
 void HumanPlayer::reset() {
