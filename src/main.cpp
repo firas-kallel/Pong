@@ -59,7 +59,7 @@ int main() {
         // 2. Rendu graphique de la frame
         screen.clear();
         screen.drawArena();
-        screen.drawScore(scorePlayer, scoreAI, "Firas", "IA");
+        screen.drawScore(scorePlayer, scoreAI, "Player", "AI");
 
         player.draw(screen.getFrame());
         ai.draw(screen.getFrame());
