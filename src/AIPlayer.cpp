@@ -14,10 +14,8 @@ AIPlayer::AIPlayer(int x, int screenHeight, int width, int height, double speed,
 
 void AIPlayer::update(double ballY, double ballVx) {
     const double paddleCenterY = y_ + height_ / 2.0;
-    const double deadZone = 10.0; // Tolérance autour du centre pour stopper les oscillations
+    const double deadZone = 10.0;
 
-    // L'IA poursuit activement la balle lorsqu'elle vient vers elle (ballVx > 0),
-    // et revient vers le centre du terrain sinon.
     double targetY = (ballVx > 0.0) ? ballY : (screenHeight_ / 2.0);
     double diff = targetY - paddleCenterY;
 
@@ -31,7 +29,6 @@ void AIPlayer::update(double ballY, double ballVx) {
 
     y_ += vy_;
 
-    // Empêche la raquette de traverser les murs supérieur et inférieur
     double minY = static_cast<double>(wallThickness_);
     double maxY = static_cast<double>(screenHeight_ - wallThickness_ - height_);
     y_ = std::clamp(y_, minY, maxY);
