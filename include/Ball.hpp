@@ -16,6 +16,8 @@ public:
     BallState move(const cv::Rect& leftPaddle, double leftPaddleVy,
                    const cv::Rect& rightPaddle, double rightPaddleVy);
     void draw(cv::Mat& image) const;
+    double getY() const;
+    double getVx() const;
 
 private:
     double x_;

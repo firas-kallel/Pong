@@ -14,8 +14,8 @@ find_package(OpenCV REQUIRED)
 set(HEADERS
     include/Screen.hpp
     include/Ball.hpp
-    # include/Joueur.hpp
-    # include/JoueurMachine.hpp
+    include/HumanPlayer.hpp
+    include/AIPlayer.hpp
 )
 
 # Déclaration explicite des fichiers sources (.cpp)
@@ -23,8 +23,8 @@ set(SOURCES
     src/main.cpp
     src/Screen.cpp
     src/Ball.cpp
-    # src/Joueur.cpp
-    # src/JoueurMachine.cpp
+    src/HumanPlayer.cpp
+    src/AIPlayer.cpp
 )
 
 # Création de l'exécutable

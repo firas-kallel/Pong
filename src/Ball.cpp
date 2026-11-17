@@ -14,6 +14,7 @@ Ball::Ball(int screenWidth, int screenHeight, int radius, double baseSpeed, int 
       screenHeight_(screenHeight),
       wallThickness_(wallThickness) {}
 
+
 void Ball::reset() {
     x_ = screenWidth_ / 2.0;
     y_ = screenHeight_ / 2.0;
@@ -79,4 +80,11 @@ BallState Ball::move(const cv::Rect& leftPaddle, double leftPaddleVy,
 
 void Ball::draw(cv::Mat& image) const {
     cv::circle(image, cv::Point(static_cast<int>(x_), static_cast<int>(y_)), radius_, cv::Scalar(255, 255, 255), -1);
+}
+double Ball::getY() const {
+    return y_;
+}
+
+double Ball::getVx() const {
+    return vx_;
 }
