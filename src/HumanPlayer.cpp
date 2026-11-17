@@ -23,6 +23,25 @@ void HumanPlayer::stop() {
     vy_ = 0.0;
 }
 
+void HumanPlayer::setSpeed(double speed) {
+    speed_ = speed;
+}
+
+void HumanPlayer::handleInput(int key) {
+    const int UP_ARROW_WIN = 2490368;
+    const int DOWN_ARROW_WIN = 2621440;
+    const int UP_ARROW_LINUX = 65362;
+    const int DOWN_ARROW_LINUX = 65364;
+
+    if (key == 'z' || key == 'Z' || key == UP_ARROW_WIN || key == UP_ARROW_LINUX) {
+        moveUp();
+    } else if (key == 's' || key == 'S' || key == DOWN_ARROW_WIN || key == DOWN_ARROW_LINUX) {
+        moveDown();
+    } else if (key == -1) {
+        stop();
+    }
+}
+
 void HumanPlayer::update() {
     y_ += vy_;
 
